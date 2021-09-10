@@ -1,0 +1,13 @@
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.exe
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.deps.json
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.runtimeconfig.json
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.runtimeconfig.dev.json
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.dll
+C:\Users\w1w2w\source\repos\Del2\Del2\bin\Debug\netcoreapp3.1\Del2.pdb
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.csprojAssemblyReference.cache
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.AssemblyInfoInputs.cache
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.AssemblyInfo.cs
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.csproj.CoreCompileInputs.cache
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.dll
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.pdb
+C:\Users\w1w2w\source\repos\Del2\Del2\obj\Debug\netcoreapp3.1\Del2.genruntimeconfig.cache
