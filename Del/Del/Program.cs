@@ -4,16 +4,6 @@ namespace Del
 {
     class Program
     {
-        //метод и делегат с одним и тем же именем
-        //Random rand = new Rand 
-        //{
-          //Random,
-          //Random,
-        //};
-        //создать ещё один делегат, который проходится по этому массиву, вычисляет среднее арифм.
-
-        //private static int Random() {return 1;}
-        //private delegate int Random();
         delegate int Operation(int a, int b);
         static void Main(string[] args)
         {
