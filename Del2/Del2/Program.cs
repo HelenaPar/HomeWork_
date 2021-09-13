@@ -17,21 +17,14 @@ namespace Del2
                 Randomize,
                 Randomize,
             };
-
-            for(int i = 0; i < random.Length; i++)
-            {
-                Console.WriteLine(random[i]());
-            }
             Calc calc = delegate (RandomNum[] array)
             {
                 int summ = 0;
-                int kol = 0;
                 for(int i = 0; i < array.Length; i++)
                 {
                     summ += array[i]();
-                    kol++;
                 }
-                return ((summ)/(kol));
+                return ((summ)/(array.Length));
             };
             Console.WriteLine();
             Console.WriteLine(calc(random));

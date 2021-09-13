@@ -1,0 +1,33 @@
+# Visual Studio Code
+.vscode
+#User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elise/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+# Visual Studio
+.vs/
+Del/Del/obj/
+Del/Del/bin/
+Del2/Del2/obj/
+Del2/Del2/bin/
+Del3/Del3/obj/
+Del3/Del3/bin/
+Del/.vs/
+Del2/.vs/
+Del3/.vs/

@@ -6,7 +6,7 @@ namespace Del3
 {
     class Stopwatch
     {
-        private int second = 1;
+        private int second = 0;
         private EventHandler eventt;
 
         public event EventHandler Event
@@ -25,8 +25,8 @@ namespace Del3
         {
             while (true)
             {
-                eventt(this, new MessageEventArgs(second, "Событие произошло..."));
                 second++;
+                eventt(this, new MessageEventArgs(second, "Событие произошло..."));
                 System.Threading.Thread.Sleep(1000);
             }
         }
