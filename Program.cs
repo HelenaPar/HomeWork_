@@ -48,7 +48,7 @@ namespace LinqTasks
 
             /* 8. Названия улиц и названия моделей автомобилей, встречающихся у жильцов этой улицы
                 (названия моделей хранятся в одном свойстве через запятую, и отсортированы по их количеству на этой улице) */
-            //
+  //
             var query8 = buyers.GroupBy(b => b.Address)
                 .Select(r => new { Street = r.Key.Street, Models = string.Join(", ", r.Select(c => c.Cars)) });
 
