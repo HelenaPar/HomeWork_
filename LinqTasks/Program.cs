@@ -37,16 +37,16 @@ namespace LinqTasks
                 .Select(r => new { Name = $"{r.FirstName} {r.LastName}", Adress = $"{r.Address.Street} {r.Address.Building}" });
 
             /* 7. Топ 3 автомобилей по продажам: название модели и количество продаж */
-            var query7 = buyers.SelectMany(b => b.Cars).GroupBy(v => v.Model)
-                .Select(r => new { Model = r.Key, Buyers = r.OrderByDescending(d => d.Buyer).Count()});
+             var query7 = buyers.SelectMany(b => b.Cars).GroupBy(c => c.Model)
+                .Select(g => new { Model = g.Key, Count = g.Count() })
+                .OrderByDescending(c => c.Count).Take(3);
 
             /* 8. Названия улиц и названия моделей автомобилей, встречающихся у жильцов этой улицы
                 (названия моделей хранятся в одном свойстве через запятую, и отсортированы по их количеству на этой улице) */
             //
-            var query8 = buyers.GroupBy(b => b.Address)
-                .Select(r => new { Street = r.Key.Street, Models = string.Join(", ", r.Select(b => b.Cars.OrderByDescending(n => n.Model.Count()).FirstOrDefault()?.Model))});
-          //  r.Select(b => b.Cars.OrderByDescending(n => n.Model.Count()))
-
+            var query8 = buyers.GroupBy(b => b.Address.Street)
+                .Select(s => new { Street = s.Key, Cars = string.Join(", ", s.SelectMany(b => b.Cars).GroupBy(c => c.Model).OrderByDescending(c => c.Count()).Select(c => c.Key)) });
+     
             /* 9. Полные имена, зарплаты и полный адрес покупателей не имеющих автомобилей */
 
                 var query9 = buyers.Where(b => !b.Cars.Any())
