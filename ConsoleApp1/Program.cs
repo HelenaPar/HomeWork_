@@ -7,26 +7,58 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            // var CreatePerson = PersonFactory.CreateManager(1, "Vitya", 20, 1);
-            //var CreatePerson2 = PersonFactory.CreateEmployee(2, "Dima", 21, 1);
-            //  var CreatePerson3 = PersonFactory.CreateClient(3, "Victor", 24, 1);
             Manager manager = new Manager()
             {
-                IdPer = 1,
+                Id = 1,
                 Age = 20,
                 Name = "Dima",
-                ID = 1
+                ManagerID = 1
+            };
+            Manager manager2 = new Manager()
+            {
+                Id = 2,
+                Age = 22,
+                Name = "Dima",
+                ManagerID = 2
             };
             var rep = new Repository<Manager>();
-            rep.Add(manager);
+            Console.WriteLine(rep.Add(manager));
+            Console.WriteLine(rep.Add(manager2));
+            Console.WriteLine("List");
+            ListCommand(rep);
+            Console.WriteLine("Get 1");
+            var per = rep.Get(1);
+            Console.WriteLine(per.ToString());
+            Console.WriteLine("Delete 1");
+            var del = rep.Delete(1);
+            Console.WriteLine(del);
+            
+            ListCommand(rep);
+            Console.WriteLine("Find");
+            FindCommand(rep, "Dima");
+        }
 
+        public static void ListCommand(Repository<Manager> rep)
+        {
             StringBuilder sb = new StringBuilder();
             Person[] man = rep.List();
             for (int i = 0; i < man.Length; i++)
             {
                 sb.AppendLine(man[i].ToString());
             }
-            sb.ToString();
+            Console.WriteLine("List");
+            Console.WriteLine(sb.ToString());
+        }
+
+        public static void FindCommand(Repository<Manager> rep, string name)
+        {
+            StringBuilder sb = new StringBuilder();
+            Person[] man = rep.Find(name);
+            for (int i = 0; i < man.Length; i++)
+            {
+                sb.AppendLine(man[i].ToString());
+            }
+            Console.WriteLine(sb.ToString());
         }
     }
 }
