@@ -8,7 +8,6 @@ namespace ConsoleApp1
 {
     public class Repository<T> where T: Person
     {
-       // private static List<T> Persons = new List<T>();//{ get; set; }
         private T[] persons = new T[100];
         int nextId = 1;
          public string Add(T person)
@@ -17,35 +16,35 @@ namespace ConsoleApp1
             {
                 if (persons[i] == null)
                 {
-                    person.IdPer = nextId;
+                    person.Id = nextId;
                     persons[i] = person;
                     nextId++;
-                    return "Добавлено!";
+                    return "Добавлен!";
                 }
             }
             return "Не добавлено!";
-         }
+        }
 
-        //public string Delete(int id)
-        //{
-        //    for (int i = 0; i < persons.Length; i++)
-        //    {
-        //        Person person = new Manager();
+        public string Delete(int id)
+        {
+            for (int i = 0; i < persons.Length; i++)
+            {
+                Person person = new Manager();
 
-        //        if (id == persons[i]?.ID)
-        //        {
-        //            persons[i] = null;
-        //            return "Добавлено!";
-        //        }
-        //    }
-        //    return "Не добавлено!";
-        //}
+                if (id == persons[i]?.Id)
+                {
+                    persons[i] = null;
+                    return "Удалено!";
+                }
+            }
+            return "Не удалено!";
+        }
 
         public Person Get(int id)
         {
             for (int i = 0; i < persons.Length; i++)
             {
-                if (id == persons[i]?.IdPer)
+                if (id == persons[i]?.Id)
                 {
                     return persons[i];
                 }
@@ -67,5 +66,20 @@ namespace ConsoleApp1
             return mass;
         }
 
+        public T[] Find(string substring)
+        {
+            T[] mass = new T[persons.Length];
+            int k = 0;
+            for (int i = 0; i < persons.Length; i++)
+            {
+                if (persons[i]?.Name.Contains(substring, StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    mass[k++] = persons[i];
+                }
+            }
+            Array.Resize(ref mass, k);
+            return mass;
+        }
     }
 }
+
