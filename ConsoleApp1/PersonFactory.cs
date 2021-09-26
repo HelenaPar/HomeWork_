@@ -13,7 +13,7 @@ namespace ConsoleApp1
         {
             return new T()
             {
-                IdPer = id,
+                Id = id,
                 Name = name,
                 Age = age
             };
@@ -22,19 +22,19 @@ namespace ConsoleApp1
         public static Manager CreateManager(int id, string name, int age, int managerid)
         {
             var manager = CreatePerson<Manager>(id, name, age);
-            manager.ID = managerid;
+            manager.IDMan = managerid;
             return manager;
         }
         public static Employee CreateEmployee(int id, string name, int age, int employeeid)
         {
             var employee = CreatePerson<Employee>(id, name, age);
-            employee.ID = employeeid;
+            employee.IDEmp = employeeid;
             return employee;
         }
         public static Client CreateClient(int id, string name, int age, int clientid)
         {
             var client = CreatePerson<Client>(id, name, age);
-            client.ID = clientid;
+            client.IDCl = clientid;
             return client;
         }
     }
