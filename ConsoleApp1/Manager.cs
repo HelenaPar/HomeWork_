@@ -8,10 +8,10 @@ namespace ConsoleApp1
 {
     public class Manager : Person
     {
-        public int ID { get; set; }
+        public int IDPer { get; set; }
         public override string ToString()
         {
-            return $"{IdPer} {Name} {Age} {ID}";
+            return $"{Id} {Name} {Age} {IDPer}";
         }
     }
 }
