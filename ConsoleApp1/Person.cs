@@ -8,12 +8,12 @@ namespace ConsoleApp1
 {
     public abstract class Person
     {
-        public int IdPer { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public override string ToString()
         {
-            return $"{IdPer} {Name} {Age}";
+            return $"{Id} {Name} {Age}";
         }
     }
 }
