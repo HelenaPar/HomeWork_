@@ -19,10 +19,10 @@ namespace ConsoleApp4
             {
                 count += item;
             }
-            Console.WriteLine("Sum without threads = " + count);
+            Console.WriteLine("Sum without task = " + count);
             Counter counter = new Counter(array);
             Console.WriteLine();
-            Console.WriteLine("Sum in all threads = " + counter.Calculate());
+            Console.WriteLine("Sum in all tasks = " + counter.Calculate());
         }
     }
 }
