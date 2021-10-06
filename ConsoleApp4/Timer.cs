@@ -26,10 +26,10 @@ namespace ConsoleApp4
             {
                 return;
             }
+            IsRun = true;
             task = new Task(() =>
             {
                 threadFinish.Reset();
-                IsRun = true;
                 while (IsRun)
                 {
                     action();
