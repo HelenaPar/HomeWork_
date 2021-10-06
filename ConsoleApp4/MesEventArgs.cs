@@ -8,15 +8,18 @@ namespace ConsoleApp4
 {
     class MesEventArgs : EventArgs
     {
-        public string Message { get; private set; }
-        public MesEventArgs(string message)
+        public int Work { get; private set; }
+        public int NotWork { get; private set; }
+
+        public MesEventArgs(int work, int notWork)
         {
-            this.Message = message;
+            this.Work = work;
+            this.NotWork = notWork;
         }
 
         public override string ToString()
         {
-            return $"{Message}";
+            return $"Work: {Work}, not work: {NotWork}";
         }
     }
 }
