@@ -9,17 +9,17 @@ namespace Async
 
         public async Task<CreditInfo> Calculate()
         {
-            int clientId = await repository.GetClientId();
-            Task<long> creditId = repository.GetCreditId(clientId);
-            Task<string> fullname = GetFullName(clientId);
-            Task<int> paidAmount = GetPaidAmount(creditId.Result);
-            Task<int> leftToPay = GetLeftToPay(creditId.Result);
+            int getClientId = await repository.GetClientId();
+            Task<long> getCreditId = repository.GetCreditId(getClientId);
+            Task<string> getFullname = GetFullName(getClientId);
+            Task<int> getPaidAmount = GetPaidAmount(await getCreditId);
+            Task<int> getLeftToPay = GetLeftToPay(await getCreditId);
             
             return new CreditInfo
             {
-                FullName = fullname.Result,
-                PaidAmount = paidAmount.Result, 
-                LeftToPay = leftToPay.Result
+                FullName = await getFullname,
+                PaidAmount = await getPaidAmount, 
+                LeftToPay = await getLeftToPay
             };
         }
 
@@ -49,9 +49,9 @@ namespace Async
 
         private async Task<int> GetPaidAmount(long creditId)
         {
-            DateTime dateOfCredit = repository.GetDateOfCredit(creditId);
-            int months = 12 * (DateTime.Now.Year - dateOfCredit.Year) + DateTime.Now.Month - dateOfCredit.Month;
+            Task<DateTime> dateOfCredit = repository.GetDateOfCredit(creditId);
             Task<int> monthlyPayment = repository.GetMonthlyPayment(creditId);
+            int months = 12 * (DateTime.Now.Year - dateOfCredit.Result.Year) + DateTime.Now.Month - dateOfCredit.Result.Month;
             return months * await monthlyPayment;
         }
 
