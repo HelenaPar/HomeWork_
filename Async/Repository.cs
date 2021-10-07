@@ -42,9 +42,9 @@ namespace Async
         /// <summary>
         /// Возвращает дату получения кредита
         /// </summary>
-        public DateTime GetDateOfCredit(long creditId)
+        public async Task<DateTime> GetDateOfCredit(long creditId)
         {
-            return db.GetData(new DateTime(2020, 05, 01));
+            return await Task.Run(() => db.GetData(new DateTime(2020, 05, 01)));
         } 
         
        /// <summary>
