@@ -1,80 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Repository<T> where T: Person
+    public class Repository
     {
-        private T[] persons = new T[100];
-        int nextId = 1;
-         public string Add(T person)
-         {
-            for (int i = 0; i < persons.Length; i++)
+        private Student[] students = new Student[11];
+        private int nextId = 1;
+
+        public int Add(Student student)
+        {
+            for(int i = 0; i < students.Length; i++)
             {
-                if (persons[i] == null)
+                if(students[i] == null)
                 {
-                    person.Id = nextId;
-                    persons[i] = person;
-                    nextId++;
-                    return "Добавлен!";
+                    student.id = nextId;
+                   
+                    students[i] = student;
+                    return nextId++;
                 }
             }
-            return "Не добавлено!";
+            return 0;
         }
 
-        public string Delete(int id)
+        public bool EditAll(Student student)
         {
-            for (int i = 0; i < persons.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
-                Person person = new Manager();
-
-                if (id == persons[i]?.Id)
+                if (student.id == students[i]?.id)
                 {
-                    persons[i] = null;
-                    return "Удалено!";
+                    students[i].NewAll(student);
+                    return true;
                 }
             }
-            return "Не удалено!";
+            return false;
         }
 
-        public Person Get(int id)
+        public Student GetId(int id)
         {
-            for (int i = 0; i < persons.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
-                if (id == persons[i]?.Id)
+                if (id == students[i]?.id)
                 {
-                    return persons[i];
+                    return students[i];
                 }
             }
             return null;
         }
-        public T[] List()
+        
+        public bool Delete(int id)
         {
-            T[] mass = new T[persons.Length];
-            int k = 0;
-            for (int i = 0; i < persons.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
-                if (persons[i] != null)
+                if(id == students[i]?.id)
                 {
-                    mass[k++] = persons[i];
+                    students[i] = null;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Student[] Find(string substring)
+        {
+            Student[] mass = new Student[students.Length];
+            int k = 0;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if(students[i]?.name.Contains(substring, StringComparison.OrdinalIgnoreCase) == true ||
+                    students[i]?.surname.Contains(substring, StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    mass[k++] = students[i];
                 }
             }
             Array.Resize(ref mass, k);
             return mass;
         }
 
-        public T[] Find(string substring)
+        public Student[] List() 
         {
-            T[] mass = new T[persons.Length];
+            Student[] mass = new Student[students.Length];
             int k = 0;
-            for (int i = 0; i < persons.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
-                if (persons[i]?.Name.Contains(substring, StringComparison.OrdinalIgnoreCase) == true)
+                if (students[i] != null)
                 {
-                    mass[k++] = persons[i];
+                    mass[k++] = students[i];
                 }
             }
             Array.Resize(ref mass, k);
@@ -82,4 +94,3 @@ namespace ConsoleApp1
         }
     }
 }
-
