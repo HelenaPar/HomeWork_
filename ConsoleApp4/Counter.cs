@@ -44,11 +44,11 @@ namespace ConsoleApp4
                     {
                         Interlocked.Add(ref totalCount, item);
                     }
-                });
-                tasks[i].RunSynchronously();
                 Interlocked.Decrement(ref work);
                 Interlocked.Increment(ref notWork);
                 finishEvent?.Invoke(this, new MesEventArgs(work, notWork));
+                });
+                tasks[i].Start();
                 Thread.Sleep(1000);
             }
             foreach (var item in tasks)
