@@ -9,7 +9,7 @@ namespace Async
 
         public async Task<CreditInfo> Calculate()
         {
-            int getClientId = await repository.GetClientId();
+            int clientId = await repository.GetClientId();
             Task<long> getCreditId = repository.GetCreditId(getClientId);
             Task<string> getFullname = GetFullName(getClientId);
             Task<int> getPaidAmount = GetPaidAmount(await getCreditId);
