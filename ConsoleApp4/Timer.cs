@@ -20,16 +20,17 @@ namespace ConsoleApp4
             this.milsec = second * 1000;
         }
 
-        public void Start()
+       public void Start()
         {
             if (IsRun)
             {
                 return;
             }
             IsRun = true;
-            task = new Task(() =>
+            Task task = Task.Run(() =>
             {
                 threadFinish.Reset();
+                
                 while (IsRun)
                 {
                     action();
@@ -37,13 +38,11 @@ namespace ConsoleApp4
                 }
                 threadFinish.Set();
             });
-            task.RunSynchronously();
         }
 
         public void Restart()
         {
             Stop();
-            Console.WriteLine();
             Start();
         }
 
