@@ -13,7 +13,7 @@ namespace Async
             Task<long> getCreditId = repository.GetCreditId(getClientId);
             Task<string> getFullname = GetFullName(getClientId);
             Task<int> getPaidAmount = GetPaidAmount(await getCreditId);
-            Task<int> getLeftToPay = GetLeftToPay(await getCreditId);
+            Task<double> getLeftToPay = GetLeftToPay(await getCreditId);
             
             return new CreditInfo
             {
@@ -30,13 +30,13 @@ namespace Async
             return $"{await  getfirstName} {await getlastName}";
         }
 
-        private async Task<int> GetLeftToPay(long creditId)
+        private async Task<double> GetLeftToPay(long creditId)
         {
             Task<int> creditAmount = GetCreditAmount(creditId);
             Task<double> interestCharges = GetInterestCharges(creditId);
             Task<int> paidAmount = GetPaidAmount(creditId);
             var left = await creditAmount + await interestCharges - await paidAmount;
-            return (int)left;
+            return (double)left;
         }
 
         private async Task<double> GetInterestCharges(long creditId)
