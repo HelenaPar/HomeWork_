@@ -18,12 +18,11 @@ namespace ConsoleApp1.Validator
 
         protected bool ValidateFile(string file)
         {
-            if(file.EndsWith(".json") || file.EndsWith(".xml") || !file.Contains("."))
+            if(file.EndsWith(".json") || !file.Contains("."))
             {
                 return true;
             }
             ErrorMessage += "Wrong name of file!\n";
-            
             return false;
         }
 
@@ -34,7 +33,6 @@ namespace ConsoleApp1.Validator
                 return true;
             }
             ErrorMessage += "Wrong id!\n";
-            
             return false;
         }
        
@@ -62,7 +60,6 @@ namespace ConsoleApp1.Validator
                 }
             }
             ErrorMessage += "Wrong surname!\n";
-           
             return false;
         }
         protected bool ValidateAge(string age)
@@ -73,7 +70,6 @@ namespace ConsoleApp1.Validator
                 return true;
             }
             ErrorMessage += "Wrong age!\n";
-            
             return false;
         }
         protected bool ValidateGender(string gender)
@@ -83,7 +79,6 @@ namespace ConsoleApp1.Validator
                 return true;
             }
             ErrorMessage += "Wrong gender!\n";
-           
             return false;
         }
     }
