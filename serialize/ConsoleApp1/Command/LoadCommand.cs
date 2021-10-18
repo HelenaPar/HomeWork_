@@ -18,17 +18,12 @@ namespace ConsoleApp1.Command
         public override string Execute()
         {
             Student[] mainStud = repository.List();
-            if (parameters[0].EndsWith(".json"))
-            {
-                Serialize();
-                return "Done!";
-            }
-            else
+            if (!parameters[0].EndsWith(".json"))
             {
                 parameters[0] += ".json";
-                Serialize();
-                return "Done!";
             }
+            Serialize();
+            return "Done!";
         }
 
         private void Serialize()
@@ -37,19 +32,17 @@ namespace ConsoleApp1.Command
             using (Stream stream = File.Open(parameters[0], FileMode.Open))
             {
                 Student[] students = JsonSerializer.DeserializeAsync<Student[]>(stream).Result;
-                for (int i = 0; i < students.Length; i++)
+                for (int i = 0; i < students.Length; i++) 
                 {
-                    for (int j = 0; j < mainStud.Length; j++)
-                    {
-                        if (students[i].id == mainStud[j].id)
-                        {
-                            Student st = new Student(students[i].id, students[i].name, students[i].surname, students[i].gender, students[i].age);
-                            repository.EditAll(st);
-                        }
-                        else repository.Add(students[i]);
+                    if (mainStud.FirstOrDefault(s => s.id == students[i].id) != null)
+                    { 
+                        Student st = new Student(students[i].id, students[i].name, students[i].surname, students[i].gender, students[i].age);
+                        repository.EditAll(st);
                     }
+                    else repository.Add(students[i]);
                 }
-            }
-        }
+             }
+          }
+       }
     }
-}
+
