@@ -18,21 +18,14 @@ namespace ConsoleApp1.Command
         public override string Execute()
         {
             Student[] students = repository.List();
-
-            if (parameters[0].EndsWith(".json"))
-            {
-                using (Stream stream = File.Open(parameters[0], FileMode.Create))
-                {
-                     JsonSerializer.SerializeAsync(stream, students);
-                }
-            }
-            else
+            if (!parameters[0].EndsWith(".json"))
             {
                 parameters[0] += ".json";
-                using (Stream stream = File.Open(parameters[0], FileMode.Create))
-                {
-                     JsonSerializer.SerializeAsync(stream, students);
-                }
+            }
+            using (Stream stream = File.Open(parameters[0], FileMode.Create))
+            {
+                Task task = JsonSerializer.SerializeAsync(stream, students);
+                task.Wait();
             }
             return "Done, check file!";
         }
