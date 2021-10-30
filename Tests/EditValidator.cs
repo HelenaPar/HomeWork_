@@ -12,12 +12,12 @@ namespace ConsoleApp1.Validator
         }
         public override bool Validate()
         {
-            bool id = ValidateId(parameters[0]);
-            bool name = ValidateName(parameters[1]);
-            bool surname = ValidateSurname(parameters[2]);
-            bool gen = ValidateGender(parameters[3]);
-            bool age = ValidateAge(parameters[4]);
-            if (id == true && name == true && surname == true && gen == true && age == true)
+            bool isIdValid = ValidateId(parameters[0]);
+            bool isNameValid = ValidateName(parameters[1]);
+            bool isSurnameValid = ValidateSurname(parameters[2]);
+            bool isGenderValid = ValidateGender(parameters[3]);
+            bool isAgeValid = ValidateAge(parameters[4]);
+            if (isIdValid && isNameValid && isSurnameValid && isGenderValid && isAgeValid)
             {
                 return true;
             }
