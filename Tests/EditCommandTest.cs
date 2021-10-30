@@ -24,7 +24,6 @@ namespace StudentConsoleApp_Test
 
             //Act
 
-            var add = commandAdd.Execute();
             var result = commandEdit.Execute();
 
             //Assert
