@@ -17,7 +17,7 @@ namespace StudentConsoleApp_Test
         {
             //Arrange
 
-            var moqReposytory = new Mock<IRepository>();
+            var moqIRepository = new Mock<IRepository>();
             moqReposytory.Setup(r => r.EditAll(It.IsAny<Student>())).Returns(true);
             var commandAdd = new AddCommand(moqReposytory.Object, new string[] { "german", "derem", "men", "35" });
             var commandEdit = new EditCommand(moqReposytory.Object, new string[] {"1", "German", "Der", "men", "35" });
