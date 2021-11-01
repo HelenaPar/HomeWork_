@@ -16,22 +16,19 @@ namespace StudentConsoleApp_Test
         public void Execute_StudentsParameters_StudentRecordChanged()
         {
             //Arrange
-
-            var moqReposytory = new Mock<IRepository>();
-            moqReposytory.Setup(r => r.EditAll(It.IsAny<Student>())).Returns(true);
-            var commandAdd = new AddCommand(moqReposytory.Object, new string[] { "german", "derem", "men", "35" });
-            var commandEdit = new EditCommand(moqReposytory.Object, new string[] {"1", "German", "Der", "men", "35" });
+            var moqIRepisitory = new Mock<IRepository>();
+            moqIRepisitory.Setup(r => r.EditAll(It.IsAny<Student>())).Returns(true);
+            var commandAdd = new AddCommand(moqIRepisitory.Object, new string[] { "german", "derem", "men", "35" });
+            var commandEdit = new EditCommand(moqIRepisitory.Object, new string[] {"1", "German", "Der", "men", "35" });
 
             //Act
-
-            var add = commandAdd.Execute();
             var result = commandEdit.Execute();
 
             //Assert
 
             Assert.Equal("Запись успешно изменена!", result);
-            moqReposytory.Verify(r => r.EditAll(It.IsAny<Student>()), Times.Once());
-            moqReposytory.Verify(r => r.EditAll(
+            moqIRepisitory.Verify(r => r.EditAll(It.IsAny<Student>()), Times.Once());
+            moqIRepisitory.Verify(r => r.EditAll(
                 It.Is<Student>(s =>
                 s.id == 1 &&
                 s.name == "German" &&
