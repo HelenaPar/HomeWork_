@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://www.google.com/search" method="post">
+        <label>Google</label>
+        <input type="text" name="q" />
+        <button type="submit">Поиск</button>
+    </form>
+    <br>
+    <br>
+    <h4>Командировачный лист</h4>
+    <form action="" method="post">
+        <label>
+            Цель поездки <input type="text" name="Aim">
+        </label>
+        <br>
+        <br>
+        <label>
+            C <input type="date" name="From">
+            по <input type="date" name="To">
+        </label>
+        <br>
+        <br>
+        <label>Оплачиваемый</label><input type="checkbox" name="Is-paid">
+        <br>
+        <br>
+        <label>Город</label>
+        <select type="submit" name="City">
+            <option disabled><strong>Минская</strong></option>
+            <option>&nbsp;&nbsp;Минск</option>
+            <option>&nbsp;&nbsp;Жодино</option>
+            <option disabled>Брестская</option>
+            <option>&nbsp;&nbsp;Брест</option>
+            <option>&nbsp;&nbsp;Барановичи</option>
+            <option disabled>Витебская</option>
+            <option>&nbsp;&nbsp;Витебск</option>
+            <option>&nbsp;&nbsp;Полоцк</option>
+            <option>&nbsp;&nbsp;Новополоцк</option>
+        </select>
+        <br>
+        <br>
+        <table border="1">
+            <tr>
+                <td colspan="2"> Сотрудник </td>
+                <td> Должность </td>
+                <td> Выбрать </td>
+            </tr>
+            <tr >
+                <td type="submit" id="name"> Иванов </td>
+                <td> Иван </td>
+                <td> Директор </td>
+                <td><input type="radio" id="name" name = "Information-about-people" value="Иванов Иван Директор"></td>
+            </tr>
+            <tr >
+                <td> Егоров </td>
+                <td> Егор </td>
+                <td> Заместитель директора </td>
+                <td><input type="radio" name = "Information-about-people" value="Егоров Егор Заместитель директора"></td>
+            </tr>
+            <tr >
+                <td> Петров </td>
+                <td> Петро </td>
+                <td> Инженер </td>
+                <td><input type="radio" name = "Information-about-people" value="Петров Петро Инженер"></td>
+            </tr>
+        </table>
+        <!--input type="hidden" type="text" name= "Information1">Иванов Иван Директор</input-->
+        <br>
+        <br>
+        <label>Примечания</label><br>
+        <textarea cols="40" rows="6" name="Note"></textarea>
+        <br>
+        <br>
+        <button type="submit">Создать</button>
+    </form>
+</body>
+
+</html>
